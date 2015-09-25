@@ -1,4 +1,8 @@
 class ArticlesController < ApplicationController
+  def index
+  	@articles = Article.all   # @articles gets passed to the associated view
+  end
+
   def show
   	@article = Article.find(params[:id])
   end
