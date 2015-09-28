@@ -9,16 +9,8 @@
 </div>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<!-- 'render' iterates over @article.comments collection, assigns each comment to a local var named the same as the partial, in this case 'comment' -->
+<%= render @article.comments %>
 
 <h2>Add a comment</h2>
 <!-- form_for takes an array here, which builds a nested route such as /articles/1/comments -->
