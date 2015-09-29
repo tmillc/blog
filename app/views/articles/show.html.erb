@@ -9,32 +9,12 @@
 </div>
 
 <h2>Comments</h2>
-<% @article.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-<% end %>
+<!-- 'render' iterates over @article.comments collection, assigns each comment to a local var named the same as the partial, in this case 'comment' -->
+<%= render @article.comments %>
 
 <h2>Add a comment</h2>
-<!-- form_for takes an array here, which builds a nested route such as /articles/1/comments -->
-<%= form_for([@article, @article.comments.build]) do |f| %>
-  <p>
-    <%= f.label :commenter %><br>
-    <%= f.text_field :commenter %>
-  </p>
-  <p>
-  	<%= f.label :body %><br>
-  	<%= f.text_area :body %>
-  </p>
-  <p>
-  	<%= f.submit %>
-  </p>
-<% end %>
+<!-- Rails knows by this we mean 'render app/views/comments/_form.html.erb' -->
+<%= render 'comments/form' %>
 
 <%= link_to 'Edit this article', edit_article_path(@article) %> <br>
 <%= link_to 'Back to the articles', articles_path %>

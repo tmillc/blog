@@ -4,7 +4,15 @@ class CommentsController < ApplicationController
 	def create
 		@article = find_article
 		@comment = @article.comments.create(comment_params)
-		# try articles_path here too
+		# redirect_to articles_path would bring us to All Articles after making a comment
+		redirect_to article_path(@article)
+
+	end
+
+	def destroy
+		@article = find_article
+		@comment = @article.comments.find(params[:id])
+		@comment.destroy
 		redirect_to article_path(@article)
 	end
 
