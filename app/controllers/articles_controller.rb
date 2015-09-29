@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  
+  http_basic_authenticate_with name: "bloop", password: "bleep", except: [:index, :show]
+
   def index
   	@articles = Article.all   # @articles gets passed to the associated view
   end
